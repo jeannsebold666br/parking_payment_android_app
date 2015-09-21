@@ -3,4 +3,10 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    /*Activity*/
+    /*Dashboard*/
+    <string name="title_bt_payTicket">Pagar ticket</string>
+    <string name="title_bt_list_payment">Listar pagamentos</string>
+
 </resources>
