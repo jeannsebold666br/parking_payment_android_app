@@ -1,0 +1,69 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="paymentcom.parking.jorge.parkingpayment.PinCheckerActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_centerInParent="true"
+        android:paddingBottom="150dp">
+
+        <TextView
+            android:id="@+id/tv_price_for_pay"
+            android:text="R$ 14,00"
+            android:gravity="center"
+            android:textSize="45dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:id="@+id/ll_pin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingTop="30dp"
+            android:paddingBottom="10dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_pin1"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+
+            <EditText
+                android:id="@+id/et_pin2"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+
+            <EditText
+                android:id="@+id/et_pin3"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+
+            <EditText
+                android:id="@+id/et_pin4"
+                android:layout_width="60dp"
+                android:layout_height="60dp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_pin_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_tv_pin_information"
+            android:textSize="15dp"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
