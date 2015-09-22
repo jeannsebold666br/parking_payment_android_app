@@ -8,5 +8,9 @@
     /*Dashboard*/
     <string name="title_bt_payTicket">Pagar ticket</string>
     <string name="title_bt_list_payment">Listar pagamentos</string>
+    <string name="title_activity_timer_count">TimerCountActivity</string>
 
+    /*Counter*/
+    <string name="title_tv_parkingTime">Tempo no estacionamento</string>
+    
 </resources>
