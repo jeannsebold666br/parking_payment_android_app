@@ -24,6 +24,10 @@
             android:name=".PinCheckerActivity"
             android:label="@string/title_activity_pin_checker" >
         </activity>
+        <activity
+            android:name=".PaymentsCongratsActivity"
+            android:label="@string/title_activity_payments_congrats" >
+        </activity>
     </application>
 
 </manifest>

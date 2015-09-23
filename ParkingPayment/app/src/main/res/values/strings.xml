@@ -16,5 +16,10 @@
 
     /*Pin information*/
     <string name="title_tv_pin_information">Digite o código PIN para pagamento</string>
+    <string name="title_activity_payments_congrats">PaymentsCongratsActivity</string>
+
+    /*Payment congrats*/
+    <string name="title_tv_payment_congrats">Parabéns, seu ticket pode ser usado para sair do
+    estacionamento.</string>
 
 </resources>
