@@ -28,6 +28,10 @@
             android:name=".PaymentsCongratsActivity"
             android:label="@string/title_activity_payments_congrats" >
         </activity>
+        <activity
+            android:name=".ListTicketsActivity"
+            android:label="@string/title_activity_list_tickets" >
+        </activity>
     </application>
 
 </manifest>

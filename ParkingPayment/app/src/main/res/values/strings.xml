@@ -21,5 +21,6 @@
     /*Payment congrats*/
     <string name="title_tv_payment_congrats">Parabéns, seu ticket pode ser usado para sair do
     estacionamento.</string>
+    <string name="title_activity_list_tickets">ListTicketsActivity</string>
 
 </resources>
