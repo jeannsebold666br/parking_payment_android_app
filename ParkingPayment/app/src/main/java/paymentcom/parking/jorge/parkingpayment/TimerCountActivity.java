@@ -11,6 +11,7 @@ public class TimerCountActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer_count);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -30,6 +31,8 @@ public class TimerCountActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }else if (id == android.R.id.home){
+            onBackPressed();
         }
 
         return super.onOptionsItemSelected(item);

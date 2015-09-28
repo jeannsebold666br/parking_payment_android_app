@@ -1,16 +1,43 @@
 package paymentcom.parking.jorge.parkingpayment;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DashboardActivity extends AppCompatActivity {
+
+    @Bind(R.id.tv_veichile_name)
+    TextView tvVeichileName;
+
+    @Bind(R.id.tv_veichile_identifier)
+    TextView tvVeichileIdentifier;
+
+    @Bind(R.id.bt_payTicket)
+    Button btPayTicket;
+
+    @Bind(R.id.bt_listPayments)
+    Button btListPayments;
+
+    @Bind(R.id.iv_profile_image)
+    CircleImageView ivProfileImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+        ButterKnife.bind(this);
     }
 
     @Override
@@ -33,5 +60,18 @@ public class DashboardActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    /* Listeners */
+    @OnClick(R.id.bt_payTicket)
+    public void payTicketListener(){
+        Intent intentTimerCountActivity = new Intent(this, TimerCountActivity.class);
+        startActivity(intentTimerCountActivity);
+    }
+
+    @OnClick(R.id.bt_listPayments)
+    public void listPaymentsListener(){
+        Intent intentPayments = new Intent(this,  ListTicketsActivity.class);
+        startActivity(intentPayments);
     }
 }
