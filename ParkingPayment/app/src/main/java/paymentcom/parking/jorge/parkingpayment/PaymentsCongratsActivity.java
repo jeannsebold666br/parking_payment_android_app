@@ -1,16 +1,26 @@
 package paymentcom.parking.jorge.parkingpayment;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class PaymentsCongratsActivity extends AppCompatActivity {
+
+    @Bind(R.id.bt_finalize_payment)
+    Button btFinalizePayment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payments_congrats);
+        ButterKnife.bind(this);
     }
 
     @Override
@@ -33,5 +43,11 @@ public class PaymentsCongratsActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @OnClick(R.id.bt_finalize_payment)
+    public void finalizePayment(){
+        Intent dashboard = new Intent(this, DashboardActivity.class);
+        startActivity(dashboard);
     }
 }
