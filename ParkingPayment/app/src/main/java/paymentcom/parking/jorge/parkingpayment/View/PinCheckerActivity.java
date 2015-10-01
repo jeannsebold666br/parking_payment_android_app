@@ -1,10 +1,9 @@
-package paymentcom.parking.jorge.parkingpayment;
+package paymentcom.parking.jorge.parkingpayment.View;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,6 +13,7 @@ import android.widget.TextView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import paymentcom.parking.jorge.parkingpayment.R;
 
 public class PinCheckerActivity extends AppCompatActivity {
 

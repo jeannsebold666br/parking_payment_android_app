@@ -1,46 +1,47 @@
-package paymentcom.parking.jorge.parkingpayment;
+package paymentcom.parking.jorge.parkingpayment.View;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
-
-import com.shamanland.fab.FloatingActionButton;
-
-import org.w3c.dom.Text;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.OnTouch;
+import de.hdodenhof.circleimageview.CircleImageView;
+import paymentcom.parking.jorge.parkingpayment.R;
 
-public class TimerCountActivity extends AppCompatActivity {
+public class DashboardActivity extends AppCompatActivity {
 
-    @Bind(R.id.tv_title_parking_timer_counter)
-    TextView tvTileParkingTimerCounter;
+    @Bind(R.id.tv_veichile_name)
+    TextView tvVeichileName;
 
-    @Bind(R.id.tv_timer_counter)
-    TextView tvTimerConter;
+    @Bind(R.id.tv_veichile_identifier)
+    TextView tvVeichileIdentifier;
 
-    @Bind(R.id.bt_fa_pay_parking)
-    FloatingActionButton btConfirmParking;
+    @Bind(R.id.bt_payTicket)
+    Button btPayTicket;
+
+    @Bind(R.id.bt_listPayments)
+    Button btListPayments;
+
+    @Bind(R.id.iv_profile_image)
+    CircleImageView ivProfileImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_timer_count);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setContentView(R.layout.activity_dashboard);
         ButterKnife.bind(this);
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_timer_count, menu);
+        getMenuInflater().inflate(R.menu.menu_dashboard, menu);
         return true;
     }
 
@@ -54,16 +55,21 @@ public class TimerCountActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
-        }else if (id == android.R.id.home){
-            onBackPressed();
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    @OnClick(R.id.bt_fa_pay_parking)
-    public void pay(){
-        Intent pinChecker = new Intent(this, PinCheckerActivity.class);
-        startActivity(pinChecker);
+    /* Listeners */
+    @OnClick(R.id.bt_payTicket)
+    public void payTicketListener(){
+        Intent intentTimerCountActivity = new Intent(this, TimerCountActivity.class);
+        startActivity(intentTimerCountActivity);
+    }
+
+    @OnClick(R.id.bt_listPayments)
+    public void listPaymentsListener(){
+        Intent intentPayments = new Intent(this,  ListTicketsActivity.class);
+        startActivity(intentPayments);
     }
 }

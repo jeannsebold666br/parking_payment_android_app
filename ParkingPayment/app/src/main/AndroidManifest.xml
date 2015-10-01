@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".DashboardActivity"
+            android:name=".View.DashboardActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,20 +17,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TimerCountActivity"
+            android:name=".View.TimerCountActivity"
             android:label="@string/title_activity_timer_count" >
 
         </activity>
         <activity
-            android:name=".PinCheckerActivity"
+            android:name=".View.PinCheckerActivity"
             android:label="@string/title_activity_pin_checker" >
         </activity>
         <activity
-            android:name=".PaymentsCongratsActivity"
+            android:name=".View.PaymentsCongratsActivity"
             android:label="@string/title_activity_payments_congrats" >
         </activity>
         <activity
-            android:name=".ListTicketsActivity"
+            android:name=".View.ListTicketsActivity"
             android:label="@string/title_activity_list_tickets" >
         </activity>
     </application>

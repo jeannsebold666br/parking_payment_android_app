@@ -1,22 +1,33 @@
-package paymentcom.parking.jorge.parkingpayment;
+package paymentcom.parking.jorge.parkingpayment.View;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
-public class ListTicketsActivity extends AppCompatActivity {
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import paymentcom.parking.jorge.parkingpayment.R;
+
+public class PaymentsCongratsActivity extends AppCompatActivity {
+
+    @Bind(R.id.bt_finalize_payment)
+    Button btFinalizePayment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_tickets);
+        setContentView(R.layout.activity_payments_congrats);
+        ButterKnife.bind(this);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_list_tickets, menu);
+        getMenuInflater().inflate(R.menu.menu_payments_congrats, menu);
         return true;
     }
 
@@ -33,5 +44,11 @@ public class ListTicketsActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @OnClick(R.id.bt_finalize_payment)
+    public void finalizePayment(){
+        Intent dashboard = new Intent(this, DashboardActivity.class);
+        startActivity(dashboard);
     }
 }
