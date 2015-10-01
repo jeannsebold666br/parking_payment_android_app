@@ -13,6 +13,7 @@
     /*Counter*/
     <string name="title_tv_parkingTime">Tempo no estacionamento</string>
     <string name="title_activity_pin_checker">PinCheckerActivity</string>
+    <string name="title_bt_pay_now">Efetuar o pagamento</string>
 
     /*Pin information*/
     <string name="title_tv_pin_information">Digite o código PIN para pagamento</string>

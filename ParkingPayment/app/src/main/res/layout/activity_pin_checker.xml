@@ -36,23 +36,43 @@
 
             <EditText
                 android:id="@+id/et_pin1"
+                android:maxLines="1"
+                android:maxLength="1"
+                android:textSize="40dp"
+                android:gravity="center"
                 android:layout_width="60dp"
-                android:layout_height="60dp" />
+                android:layout_height="60dp"
+                android:inputType="number"/>
 
             <EditText
                 android:id="@+id/et_pin2"
+                android:maxLines="1"
+                android:maxLength="1"
+                android:textSize="40dp"
+                android:gravity="center"
                 android:layout_width="60dp"
-                android:layout_height="60dp" />
+                android:layout_height="60dp"
+                android:inputType="number"/>
 
             <EditText
                 android:id="@+id/et_pin3"
+                android:maxLines="1"
+                android:maxLength="1"
+                android:textSize="40dp"
+                android:gravity="center"
                 android:layout_width="60dp"
-                android:layout_height="60dp" />
+                android:layout_height="60dp"
+                android:inputType="number"/>
 
             <EditText
                 android:id="@+id/et_pin4"
+                android:maxLines="1"
+                android:maxLength="1"
+                android:textSize="40dp"
+                android:gravity="center"
                 android:layout_width="60dp"
-                android:layout_height="60dp" />
+                android:layout_height="60dp"
+                android:inputType="number"/>
 
         </LinearLayout>
 
