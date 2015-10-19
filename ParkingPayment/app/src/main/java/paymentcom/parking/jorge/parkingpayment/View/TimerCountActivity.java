@@ -60,7 +60,23 @@ public class TimerCountActivity extends AppCompatActivity {
 
     @OnClick(R.id.bt_fa_pay_parking)
     public void pay(){
-        Intent pinChecker = new Intent(this, PinCheckerActivity.class);
-        startActivity(pinChecker);
+
+        Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+        intent.putExtra("SCAN_FORMATS", "CODE_39," +
+                "CODE_93," +
+                "CODE_128," +
+                "DATA_MATRIX," +
+                "ITF," +
+                "CODABAR," +
+                "EAN_13," +
+                "EAN_8," +
+                "UPC_A" +
+                ",QR_CODE");
+        startActivityForResult(intent, 0);
+
+//        Intent pinChecker = new Intent(this, PinCheckerActivity.class);
+//        startActivity(pinChecker);
     }
+
+
 }
