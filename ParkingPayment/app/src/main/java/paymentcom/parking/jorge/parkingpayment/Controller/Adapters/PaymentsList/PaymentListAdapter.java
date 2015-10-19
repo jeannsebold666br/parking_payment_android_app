@@ -3,6 +3,7 @@ package paymentcom.parking.jorge.parkingpayment.Controller.Adapters.PaymentsList
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,7 @@ public class PaymentListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public int getItemCount() {
+        Log.i("Count",""+paymentList.size());
         return paymentList.size();
     }
 
