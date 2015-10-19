@@ -3,6 +3,7 @@ package paymentcom.parking.jorge.parkingpayment.View;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -74,9 +75,24 @@ public class TimerCountActivity extends AppCompatActivity {
                 ",QR_CODE");
         startActivityForResult(intent, 0);
 
-//        Intent pinChecker = new Intent(this, PinCheckerActivity.class);
-//        startActivity(pinChecker);
     }
 
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (requestCode == 0) {
+            if (resultCode == RESULT_OK) {
 
+
+                String contents = intent.getStringExtra("SCAN_RESULT");
+                String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
+
+                Intent pinChecker = new Intent(this, PinCheckerActivity.class);
+                pinChecker.putExtra("BARCODE_CONTENT",contents);
+                startActivity(pinChecker);
+
+            } else if (resultCode == RESULT_CANCELED) {
+
+                Log.i("App", "Scan unsuccessful");
+            }
+        }
+    }
 }
