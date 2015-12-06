@@ -1,6 +1,7 @@
 package paymentcom.parking.jorge.parkingpayment.View;
 
 import android.app.AlertDialog;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -94,21 +95,13 @@ public class DashboardActivity extends AppCompatActivity {
         startActivity(intentPayments);
     }
 
+
     public void showAuthDialog(){
-        LayoutInflater layoutInflater = LayoutInflater.from(this);
-        View autheticationView = layoutInflater.inflate(R.layout.fragment_authentication, null);
 
-        ButterKnife.bind(autheticationView);
+        FragmentManager fragmentManager = getFragmentManager();
+        AuthenticationFragment authenticationFragment = new AuthenticationFragment();
+        authenticationFragment.setCancelable(false);
+        authenticationFragment.show(fragmentManager, null);
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setView(autheticationView);
-        AlertDialog alertDialog = builder.create();
-
-        alertDialog.setCanceledOnTouchOutside(false);
-
-        alertDialog.show();
-        
     }
-
-
 }

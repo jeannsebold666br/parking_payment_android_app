@@ -1,5 +1,6 @@
 package paymentcom.parking.jorge.parkingpayment.View;
 
+import android.app.DialogFragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,12 +9,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import paymentcom.parking.jorge.parkingpayment.Model.Authentication.SignIn;
 import paymentcom.parking.jorge.parkingpayment.Model.Authentication.SignInResponse;
+import paymentcom.parking.jorge.parkingpayment.Model.Utils.StringValidations;
 import paymentcom.parking.jorge.parkingpayment.R;
 import paymentcom.parking.jorge.parkingpayment.Viewcontroller.Services.Base.ServiceGenerator;
 import paymentcom.parking.jorge.parkingpayment.Viewcontroller.Services.Requests.Authentication.AuthenticationRequest;
@@ -31,13 +35,16 @@ import retrofit.Retrofit;
  * create an instance of this fragment.
  *
  */
-public class AuthenticationFragment extends Fragment {
+public class AuthenticationFragment extends DialogFragment {
 
     @Bind(R.id.et_email)
     EditText etEmail;
 
     @Bind(R.id.et_password)
     EditText etPassword;
+
+    @Bind(R.id.bt_signin)
+    Button btSignin;
 
     private OnFragmentInteractionListener mListener;
 
@@ -56,6 +63,8 @@ public class AuthenticationFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+        Log.i("OnCreate","");
         if (getArguments() != null) {
         }
     }
@@ -64,7 +73,10 @@ public class AuthenticationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_authentication, container, false);
+        View v= inflater.inflate(R.layout.fragment_authentication, container, false);
+        ButterKnife.bind(this, v);
+        Log.i("OnCreateView", "");
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -96,11 +108,13 @@ public class AuthenticationFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
-
     @OnClick(R.id.bt_signin)
     public void siginAuthListener(){
 
-        SignIn signIn= new SignIn("jhrocha.sousa@gmail.com","12345678");
+        String email= etEmail.getText().toString();
+        String password= etPassword.getText().toString();
+        SignIn signIn= new SignIn(email,password);
+
         AuthenticationRequest request = (AuthenticationRequest) ServiceGenerator.createService(AuthenticationRequest.class);
         Call<SignInResponse> call= request.signin(signIn);
 

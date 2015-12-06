@@ -3,7 +3,6 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:id="@+id/fl_authentication"
-    android:padding="20dp"
     tools:context="paymentcom.parking.jorge.parkingpayment.View.AuthenticationFragment">
 
     <LinearLayout
