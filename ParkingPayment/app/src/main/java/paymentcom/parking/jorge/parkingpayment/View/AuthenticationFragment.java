@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -75,7 +76,7 @@ public class AuthenticationFragment extends DialogFragment {
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_authentication, container, false);
         ButterKnife.bind(this, v);
-        Log.i("OnCreateView", "");
+        getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         return v;
     }
 
@@ -123,17 +124,16 @@ public class AuthenticationFragment extends DialogFragment {
             public void onResponse(Response<SignInResponse> response, Retrofit retrofit) {
                 if (response.isSuccess()) {
                     SignInResponse r = response.body();
-                    Log.i("Success - onResponse", r.token);
+
                 } else {
-                    Log.i("Fail - onResponse", response.message() + " - Code: " + response.code() + "" +
-                            " " + retrofit.baseUrl().url() + "");
+
                 }
 
             }
 
             @Override
             public void onFailure(Throwable t) {
-                Log.i("onFailure", t.getMessage());
+
             }
         });
 
