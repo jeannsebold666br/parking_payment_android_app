@@ -1,10 +1,13 @@
 package paymentcom.parking.jorge.parkingpayment.View;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -36,6 +39,8 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         ButterKnife.bind(this);
+
+        showAuthDialog();
     }
 
     @Override
@@ -71,5 +76,18 @@ public class DashboardActivity extends AppCompatActivity {
     public void listPaymentsListener(){
         Intent intentPayments = new Intent(this,  ListTicketsActivity.class);
         startActivity(intentPayments);
+    }
+
+    public void showAuthDialog(){
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        View autheticationView = layoutInflater.inflate(R.layout.layout_dialog_register, null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(autheticationView);
+        AlertDialog alertDialog = builder.create();
+
+        alertDialog.setCanceledOnTouchOutside(false);
+
+        alertDialog.show();
     }
 }
