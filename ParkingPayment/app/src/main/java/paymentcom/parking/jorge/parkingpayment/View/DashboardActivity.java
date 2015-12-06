@@ -4,18 +4,34 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.zxing.common.StringUtils;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
+import paymentcom.parking.jorge.parkingpayment.Model.Authentication.SignIn;
+import paymentcom.parking.jorge.parkingpayment.Model.Authentication.SignInResponse;
+import paymentcom.parking.jorge.parkingpayment.Model.Utils.StringValidations;
 import paymentcom.parking.jorge.parkingpayment.R;
+import paymentcom.parking.jorge.parkingpayment.Viewcontroller.Services.Base.ServiceGenerator;
+import paymentcom.parking.jorge.parkingpayment.Viewcontroller.Services.Requests.Authentication.AuthenticationRequest;
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -80,7 +96,9 @@ public class DashboardActivity extends AppCompatActivity {
 
     public void showAuthDialog(){
         LayoutInflater layoutInflater = LayoutInflater.from(this);
-        View autheticationView = layoutInflater.inflate(R.layout.layout_dialog_register, null);
+        View autheticationView = layoutInflater.inflate(R.layout.fragment_authentication, null);
+
+        ButterKnife.bind(autheticationView);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setView(autheticationView);
@@ -89,5 +107,8 @@ public class DashboardActivity extends AppCompatActivity {
         alertDialog.setCanceledOnTouchOutside(false);
 
         alertDialog.show();
+        
     }
+
+
 }

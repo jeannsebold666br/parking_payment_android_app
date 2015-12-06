@@ -1,0 +1,47 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/fl_authentication"
+    android:padding="20dp"
+    tools:context="paymentcom.parking.jorge.parkingpayment.View.AuthenticationFragment">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/il_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/title_et_email"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/il_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/title_et_password"/>
+        </android.support.design.widget.TextInputLayout
+            >
+
+        <Button
+            android:id="@+id/bt_signin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_bt_signin"
+            android:textColor="@color/cardview_dark_background"
+            android:backgroundTint="@color/accent"
+            android:padding="20dp"/>
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -4,6 +4,14 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+
+    /*Dialogs*/
+    /*SignIn and SignUp*/
+    <string name="title_et_email">Email</string>
+    <string name="title_et_password">Senha</string>
+    <string name="title_bt_signin">Acessar</string>
+    <string name="title_bt_signup">Registrar</string>
+
     /*Activity*/
     /*Dashboard*/
     <string name="title_bt_payTicket">Pagar ticket</string>
@@ -23,5 +31,8 @@
     <string name="title_tv_payment_congrats">Parabéns, seu ticket pode ser usado para sair do
     estacionamento.</string>
     <string name="title_activity_list_tickets">ListTicketsActivity</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
