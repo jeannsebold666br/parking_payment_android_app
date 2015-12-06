@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by jorgehsrocha on 12/5/15.
  */
-public class LoginResponse {
+public class SignInResponse {
     @SerializedName("token")
     String token;
 }
