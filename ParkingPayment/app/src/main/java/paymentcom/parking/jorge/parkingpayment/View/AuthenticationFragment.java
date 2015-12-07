@@ -2,6 +2,7 @@ package paymentcom.parking.jorge.parkingpayment.View;
 
 import android.app.DialogFragment;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -124,9 +125,11 @@ public class AuthenticationFragment extends DialogFragment {
             public void onResponse(Response<SignInResponse> response, Retrofit retrofit) {
                 if (response.isSuccess()) {
                     SignInResponse r = response.body();
-
-                } else {
-
+                    SharedPreferences preferences= getActivity().getPreferences(Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor= preferences.edit();
+                    editor.putString("token",r.token);
+                    editor.commit();
+                    getDialog().dismiss();
                 }
 
             }
