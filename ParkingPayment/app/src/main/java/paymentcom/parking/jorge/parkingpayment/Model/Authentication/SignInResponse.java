@@ -7,5 +7,5 @@ import com.google.gson.annotations.SerializedName;
  */
 public class SignInResponse {
     @SerializedName("token")
-    String token;
+    public String token;
 }
