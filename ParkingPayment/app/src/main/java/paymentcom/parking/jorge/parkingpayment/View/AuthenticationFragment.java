@@ -1,5 +1,6 @@
 package paymentcom.parking.jorge.parkingpayment.View;
 
+import android.app.AlertDialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -17,6 +18,7 @@ import android.widget.EditText;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import dmax.dialog.SpotsDialog;
 import paymentcom.parking.jorge.parkingpayment.Model.Authentication.SignIn;
 import paymentcom.parking.jorge.parkingpayment.Model.Authentication.SignInResponse;
 import paymentcom.parking.jorge.parkingpayment.Model.Utils.StringValidations;
@@ -120,6 +122,9 @@ public class AuthenticationFragment extends DialogFragment {
         AuthenticationRequest request = (AuthenticationRequest) ServiceGenerator.createService(AuthenticationRequest.class);
         Call<SignInResponse> call= request.signin(signIn);
 
+        final AlertDialog dialog = new SpotsDialog(getActivity());
+        dialog.show();
+
         call.enqueue(new Callback<SignInResponse>() {
             @Override
             public void onResponse(Response<SignInResponse> response, Retrofit retrofit) {
@@ -127,17 +132,23 @@ public class AuthenticationFragment extends DialogFragment {
                     SignInResponse r = response.body();
                     SharedPreferences preferences= getActivity().getPreferences(Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor= preferences.edit();
-                    editor.putString("token",r.token);
+                    editor.putString("token", r.token);
                     editor.commit();
                     getDialog().dismiss();
+
+                }else{
+
                 }
 
+                dialog.dismiss();
             }
 
             @Override
             public void onFailure(Throwable t) {
-
+                dialog.dismiss();
             }
+
+
         });
 
 
