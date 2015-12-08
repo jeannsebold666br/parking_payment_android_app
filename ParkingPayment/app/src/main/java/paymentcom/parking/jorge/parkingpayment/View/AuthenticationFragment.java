@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -81,6 +82,8 @@ public class AuthenticationFragment extends DialogFragment {
         View v= inflater.inflate(R.layout.fragment_authentication, container, false);
         ButterKnife.bind(this, v);
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        addFocusChangeListener(etEmail);
+        addFocusChangeListener(etPassword);
         return v;
     }
 
@@ -157,6 +160,22 @@ public class AuthenticationFragment extends DialogFragment {
         });
 
 
+    }
+
+    public void addFocusChangeListener(final EditText editText){
+        editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    hideKeyboard(editText);
+                }
+            }
+        });
+    }
+
+    private void hideKeyboard(EditText editText) {
+        InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
     }
 
 }
