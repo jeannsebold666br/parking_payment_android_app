@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -133,11 +134,12 @@ public class AuthenticationFragment extends DialogFragment {
                     SharedPreferences preferences= getActivity().getPreferences(Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor= preferences.edit();
                     editor.putString("token", r.token);
-                    editor.commit();
                     getDialog().dismiss();
-
+                    editor.commit();
                 }else{
-
+                    Toast.makeText(getActivity(),
+                            getResources().getText(R.string.message_wrong_credentials),
+                            Toast.LENGTH_SHORT).show();
                 }
 
                 dialog.dismiss();
@@ -145,6 +147,9 @@ public class AuthenticationFragment extends DialogFragment {
 
             @Override
             public void onFailure(Throwable t) {
+                Toast.makeText(getActivity(),
+                        getResources().getText(R.string.message_wrong_bad_request),
+                        Toast.LENGTH_SHORT).show();;
                 dialog.dismiss();
             }
 

@@ -11,7 +11,8 @@
     <string name="title_et_password">Senha</string>
     <string name="title_bt_signin">Acessar</string>
     <string name="title_bt_signup">Registrar</string>
-
+    <string name="message_wrong_credentials">"Verifique se o email e senha estão corretos"</string>
+    <string name="message_wrong_bad_request">"Ocorreu um erro, verifique sua conexão com internet e tente novamente"</string>
     /*Activity*/
     /*Dashboard*/
     <string name="title_bt_payTicket">Pagar ticket</string>
