@@ -1,5 +1,6 @@
 package paymentcom.parking.jorge.parkingpayment.View;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,15 +8,28 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.shamanland.fab.FloatingActionButton;
+
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import dmax.dialog.SpotsDialog;
+import paymentcom.parking.jorge.parkingpayment.Model.Ticket.TicketResponse;
 import paymentcom.parking.jorge.parkingpayment.R;
+import paymentcom.parking.jorge.parkingpayment.Viewcontroller.Services.Base.ServiceGenerator;
+import paymentcom.parking.jorge.parkingpayment.Viewcontroller.Services.Requests.Ticket.TicketRequest;
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
 
 public class TimerCountActivity extends AppCompatActivity {
+
+    TicketResponse ticketResponse;
 
     @Bind(R.id.tv_title_parking_timer_counter)
     TextView tvTileParkingTimerCounter;
@@ -32,6 +46,7 @@ public class TimerCountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_timer_count);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
+        receiveNoPaidTicket();
 
     }
 
@@ -94,5 +109,41 @@ public class TimerCountActivity extends AppCompatActivity {
                 Log.i("App", "Scan unsuccessful");
             }
         }
+    }
+
+    public void receiveNoPaidTicket(){
+
+        TicketRequest request= (TicketRequest) ServiceGenerator
+                .createService(TicketRequest.class, getApplicationContext());
+        Call<List<TicketResponse>> call= request.allTickets();
+
+        final AlertDialog dialog = new SpotsDialog(this);
+        dialog.show();
+
+        call.enqueue(new Callback<List<TicketResponse>>() {
+            @Override
+            public void onResponse(Response<List<TicketResponse>> response, Retrofit retrofit) {
+                if (response.isSuccess()){
+                    List<TicketResponse> ticketResponses= response.body();
+                    for (TicketResponse ticket : ticketResponses){
+                       ticketResponse = ticket;
+                    }
+                }else{
+                    Toast.makeText(getApplicationContext(),
+                            getResources().getText(R.string.message_wrong_bad_request),
+                            Toast.LENGTH_SHORT).show();
+                }
+
+                dialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                Toast.makeText(getApplicationContext(),
+                        getResources().getText(R.string.message_wrong_bad_request),
+                        Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
     }
 }
