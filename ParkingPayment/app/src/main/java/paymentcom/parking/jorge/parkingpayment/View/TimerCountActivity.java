@@ -126,7 +126,7 @@ public class TimerCountActivity extends AppCompatActivity {
                 if (response.isSuccess()){
                     List<TicketResponse> ticketResponses= response.body();
                     for (TicketResponse ticket : ticketResponses){
-                       ticketResponse = ticket;
+                        if (ticket.getPaid() == false) ticketResponse = ticket;
                     }
                 }else{
                     Toast.makeText(getApplicationContext(),
