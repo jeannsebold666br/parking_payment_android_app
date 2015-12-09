@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -123,7 +124,8 @@ public class AuthenticationFragment extends DialogFragment {
         String password= etPassword.getText().toString();
         SignIn signIn= new SignIn(email,password);
 
-        AuthenticationRequest request = (AuthenticationRequest) ServiceGenerator.createService(AuthenticationRequest.class);
+        AuthenticationRequest request = (AuthenticationRequest) ServiceGenerator
+                .createService(AuthenticationRequest.class, null);
         Call<SignInResponse> call= request.signin(signIn);
 
         final AlertDialog dialog = new SpotsDialog(getActivity());
@@ -134,7 +136,7 @@ public class AuthenticationFragment extends DialogFragment {
             public void onResponse(Response<SignInResponse> response, Retrofit retrofit) {
                 if (response.isSuccess()) {
                     SignInResponse r = response.body();
-                    SharedPreferences preferences= getActivity().getPreferences(Context.MODE_PRIVATE);
+                    SharedPreferences preferences= getActivity().getSharedPreferences("pkapi", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor= preferences.edit();
                     editor.putString("token", r.token);
                     getDialog().dismiss();
