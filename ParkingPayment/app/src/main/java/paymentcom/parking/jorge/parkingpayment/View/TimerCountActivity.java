@@ -111,9 +111,6 @@ public class TimerCountActivity extends AppCompatActivity {
                 pinChecker.putExtra("BARCODE_CONTENT",contents);
                 startActivity(pinChecker);
 
-            } else if (resultCode == RESULT_CANCELED) {
-
-                Log.i("App", "Scan unsuccessful");
             }
         }
     }
