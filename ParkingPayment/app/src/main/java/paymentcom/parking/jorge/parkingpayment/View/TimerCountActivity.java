@@ -2,17 +2,24 @@ package paymentcom.parking.jorge.parkingpayment.View;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Chronometer;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.shamanland.fab.FloatingActionButton;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -35,7 +42,7 @@ public class TimerCountActivity extends AppCompatActivity {
     TextView tvTileParkingTimerCounter;
 
     @Bind(R.id.tv_timer_counter)
-    TextView tvTimerConter;
+    Chronometer tvTimerConter;
 
     @Bind(R.id.bt_fa_pay_parking)
     FloatingActionButton btConfirmParking;
@@ -125,8 +132,12 @@ public class TimerCountActivity extends AppCompatActivity {
             public void onResponse(Response<List<TicketResponse>> response, Retrofit retrofit) {
                 if (response.isSuccess()){
                     List<TicketResponse> ticketResponses= response.body();
+                    dialog.dismiss();
                     for (TicketResponse ticket : ticketResponses){
-                        if (ticket.getPaid() == false) ticketResponse = ticket;
+                        if (ticket.getPaid() == false) {
+                            ticketResponse = ticket;
+                            activeCounter();
+                        }
                     }
                 }else{
                     Toast.makeText(getApplicationContext(),
@@ -145,5 +156,43 @@ public class TimerCountActivity extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
+    }
+
+    public void activeCounter(){
+
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        Date date;
+
+        int i=0;
+            try {
+                Date dateNow= new Date();
+                date = df.parse(ticketResponse.getCreated_at());
+//                String newDateString = df.format(date);
+//
+//                //in milliseconds
+//                long diff = dateNow.getTime() - date.getTime();
+//
+//                long diffSeconds = diff / 1000 % 60;
+//                long diffMinutes = diff / (60 * 1000) % 60;
+//                long diffHours = diff / (60 * 60 * 1000) % 24;
+//                long diffDays = diff / (24 * 60 * 60 * 1000);
+//
+//                String counter="";
+//                if (diffHours <= 0){
+//                    counter=diffMinutes+":"+diffSeconds;
+//                }else{
+//                    counter=diffHours+""+diffMinutes+":"+diffSeconds;
+//                }
+//                tvTimerConter.setText(String.valueOf(counter));
+                long lastSuccess = date.getTime(); //Some Date object
+                long elapsedRealtimeOffset = System.currentTimeMillis() - SystemClock.elapsedRealtime();
+                tvTimerConter.setBase(lastSuccess - elapsedRealtimeOffset);
+                tvTimerConter.start();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+
+
     }
 }
