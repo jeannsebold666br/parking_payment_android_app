@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.shamanland.fab.FloatingActionButton;
 
+import java.security.MessageDigest;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -103,13 +104,18 @@ public class TimerCountActivity extends AppCompatActivity {
         if (requestCode == 0) {
             if (resultCode == RESULT_OK) {
 
-
                 String contents = intent.getStringExtra("SCAN_RESULT");
                 String format = intent.getStringExtra("SCAN_RESULT_FORMAT");
 
                 Intent pinChecker = new Intent(this, PinCheckerActivity.class);
                 pinChecker.putExtra("BARCODE_CONTENT",contents);
-                startActivity(pinChecker);
+
+                String hashkey= MD5(ticketResponse.getCreated_at().toString()
+                        +ticketResponse.getId());
+
+                if (contents.equals(hashkey)){
+                    startActivity(pinChecker);
+                }
 
             }
         }
@@ -191,5 +197,19 @@ public class TimerCountActivity extends AppCompatActivity {
 
 
 
+    }
+
+    public String MD5(String md5) {
+        try {
+            java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+            byte[] array = md.digest(md5.getBytes());
+            StringBuffer sb = new StringBuffer();
+            for (int i = 0; i < array.length; ++i) {
+                sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
+            }
+            return sb.toString();
+        } catch (java.security.NoSuchAlgorithmException e) {
+        }
+        return null;
     }
 }
