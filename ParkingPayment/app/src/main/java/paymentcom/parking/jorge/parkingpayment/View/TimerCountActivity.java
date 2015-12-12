@@ -110,10 +110,15 @@ public class TimerCountActivity extends AppCompatActivity {
                 Intent pinChecker = new Intent(this, PinCheckerActivity.class);
                 pinChecker.putExtra("BARCODE_CONTENT",contents);
 
+                Log.i("Ticket - AR", "Timestamp :=>" + ticketResponse.getCreated_at() + " Id :=>" + ticketResponse.getId());
+
                 String hashkey= MD5(ticketResponse.getCreated_at().toString()
                         +ticketResponse.getId());
 
-                if (contents.equals(hashkey)){
+                String contentHash= MD5(contents);
+                Log.i("Result", "Hash :=>"+hashkey+" content hash :=>"+contentHash);
+
+                if (contentHash.equals(hashkey)){
                     startActivity(pinChecker);
                 }
 
@@ -140,6 +145,7 @@ public class TimerCountActivity extends AppCompatActivity {
                         if (ticket.getPaid() == false) {
                             ticketResponse = ticket;
                             activeCounter();
+                            Log.i("Ticket", "Timestamp :=>"+ticketResponse.getCreated_at()+" Id :=>"+ticketResponse.getId());
                         }
                     }
                 }else{
