@@ -21,7 +21,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:hint="@string/title_et_email"/>
+                android:hint="@string/title_et_email"
+                android:text="jhrocha.sousa@gmail.com"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -33,7 +34,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:hint="@string/title_et_password"/>
+                android:hint="@string/title_et_password"
+                android:text="12345678"/>
         </android.support.design.widget.TextInputLayout
             >
 

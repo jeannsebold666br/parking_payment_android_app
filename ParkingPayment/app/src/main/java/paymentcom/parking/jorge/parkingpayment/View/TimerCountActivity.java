@@ -16,6 +16,7 @@ import com.shamanland.fab.FloatingActionButton;
 
 import java.security.MessageDigest;
 import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -47,6 +48,9 @@ public class TimerCountActivity extends AppCompatActivity {
 
     @Bind(R.id.bt_fa_pay_parking)
     FloatingActionButton btConfirmParking;
+
+    @Bind(R.id.tv_value_ticket_price)
+    TextView tvPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +120,7 @@ public class TimerCountActivity extends AppCompatActivity {
                         +ticketResponse.getId());
 
                 String contentHash= MD5(contents);
+
                 Log.i("Result", "Hash :=>"+hashkey+" content hash :=>"+contentHash);
 
                 if (contentHash.equals(hashkey)){
@@ -176,33 +181,14 @@ public class TimerCountActivity extends AppCompatActivity {
             try {
                 Date dateNow= new Date();
                 date = df.parse(ticketResponse.getCreated_at());
-//                String newDateString = df.format(date);
-//
-//                //in milliseconds
-//                long diff = dateNow.getTime() - date.getTime();
-//
-//                long diffSeconds = diff / 1000 % 60;
-//                long diffMinutes = diff / (60 * 1000) % 60;
-//                long diffHours = diff / (60 * 60 * 1000) % 24;
-//                long diffDays = diff / (24 * 60 * 60 * 1000);
-//
-//                String counter="";
-//                if (diffHours <= 0){
-//                    counter=diffMinutes+":"+diffSeconds;
-//                }else{
-//                    counter=diffHours+""+diffMinutes+":"+diffSeconds;
-//                }
-//                tvTimerConter.setText(String.valueOf(counter));
                 long lastSuccess = date.getTime(); //Some Date object
                 long elapsedRealtimeOffset = System.currentTimeMillis() - SystemClock.elapsedRealtime();
                 tvTimerConter.setBase(lastSuccess - elapsedRealtimeOffset);
                 tvTimerConter.start();
+                showTicketPrice(ticketResponse);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-
-
-
     }
 
     public String MD5(String md5) {
@@ -217,5 +203,32 @@ public class TimerCountActivity extends AppCompatActivity {
         } catch (java.security.NoSuchAlgorithmException e) {
         }
         return null;
+    }
+
+    private void showTicketPrice(TicketResponse t){
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        Date dateNow= new Date();
+
+        try{
+
+            Date date = df.parse(t.getCreated_at());
+            //in milliseconds
+            long diff = dateNow.getTime() - date.getTime();
+            long diffSeconds = diff / 1000 % 60;
+            long diffMinutes = diff / (60 * 1000) % 60;
+            long diffHours = diff / (60 * 60 * 1000) % 24;
+            long diffDays = diff / (24 * 60 * 60 * 1000);
+
+            double price= diffHours*3.59;
+            Locale locale = new Locale("pt", "BR");
+            NumberFormat formatter = NumberFormat.getCurrencyInstance(locale);
+
+            tvPrice.setText(String.valueOf(formatter.format(price)));
+
+        }catch (ParseException e){
+
+        }
+
+
     }
 }

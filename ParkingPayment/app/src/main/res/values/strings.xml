@@ -24,6 +24,7 @@
     <string name="title_activity_pin_checker">PinCheckerActivity</string>
     <string name="title_bt_pay_now">Efetuar o pagamento</string>
     <string name="message_load_fail_ticket">Verifique sua conexão com a internet</string>
+    <string name="title_ticket_price">Valor a ser pago</string>
 
     /*Pin information*/
     <string name="title_tv_pin_information">Digite o código PIN para pagamento</string>
