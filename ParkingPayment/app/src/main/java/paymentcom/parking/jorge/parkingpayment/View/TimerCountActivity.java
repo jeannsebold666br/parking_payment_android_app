@@ -259,7 +259,7 @@ public class TimerCountActivity extends AppCompatActivity {
             try {
                 Date dateNow= new Date();
                 date = df.parse(ticketResponse.getCreated_at());
-                long lastSuccess = date.getTime(); //Some Date object
+                long lastSuccess = date.getTime();
                 long elapsedRealtimeOffset = System.currentTimeMillis() - SystemClock.elapsedRealtime();
                 tvTimerConter.setBase(lastSuccess - elapsedRealtimeOffset);
                 tvTimerConter.start();
