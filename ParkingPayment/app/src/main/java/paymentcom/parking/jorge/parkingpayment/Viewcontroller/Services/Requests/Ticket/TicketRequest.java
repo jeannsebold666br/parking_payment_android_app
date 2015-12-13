@@ -2,12 +2,11 @@ package paymentcom.parking.jorge.parkingpayment.Viewcontroller.Services.Requests
 
 import java.util.List;
 
-import paymentcom.parking.jorge.parkingpayment.Model.ApiConstants.ApiConstants;
+import paymentcom.parking.jorge.parkingpayment.Model.Ticket.TicketPay;
 import paymentcom.parking.jorge.parkingpayment.Model.Ticket.TicketResponse;
-import paymentcom.parking.jorge.parkingpayment.Model.Utils.StringValidations;
 import retrofit.Call;
+import retrofit.http.Body;
 import retrofit.http.GET;
-import retrofit.http.Headers;
 import retrofit.http.POST;
 
 /**
@@ -17,4 +16,7 @@ public interface TicketRequest {
 
     @GET("/api/v1/ticket/all")
     Call<List<TicketResponse>> allTickets();
+
+    @POST("/api/v1/ticket/pay")
+    Call<TicketResponse> payTicket(@Body TicketPay ticketPay);
 }

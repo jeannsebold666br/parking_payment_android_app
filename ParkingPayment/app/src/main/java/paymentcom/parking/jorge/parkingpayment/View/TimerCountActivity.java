@@ -1,6 +1,7 @@
 package paymentcom.parking.jorge.parkingpayment.View;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +15,6 @@ import android.widget.Toast;
 
 import com.shamanland.fab.FloatingActionButton;
 
-import java.security.MessageDigest;
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -27,6 +27,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import dmax.dialog.SpotsDialog;
+import paymentcom.parking.jorge.parkingpayment.Model.Ticket.TicketPay;
 import paymentcom.parking.jorge.parkingpayment.Model.Ticket.TicketResponse;
 import paymentcom.parking.jorge.parkingpayment.R;
 import paymentcom.parking.jorge.parkingpayment.Viewcontroller.Services.Base.ServiceGenerator;
@@ -124,7 +125,80 @@ public class TimerCountActivity extends AppCompatActivity {
                 Log.i("Result", "Hash :=>"+hashkey+" content hash :=>"+contentHash);
 
                 if (contentHash.equals(hashkey)){
-                    startActivity(pinChecker);
+                    final double tickecPrice= calculateTicketPrice(ticketResponse);
+
+                    Locale locale = new Locale("pt", "BR");
+                    NumberFormat formatter = NumberFormat.getCurrencyInstance(locale);
+
+                    new AlertDialog.Builder(this)
+                            .setTitle("Confirmar pagamento")
+                            .setMessage("Deseja pagar o valor de "+formatter.format(tickecPrice)+" para o ticket ?")
+                            .setPositiveButton("Pagar agora", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    TicketRequest request = ServiceGenerator
+                                            .createService(TicketRequest.class,
+                                                    getApplicationContext());
+                                    TicketPay ticketPay = new TicketPay();
+                                    ticketPay.setPrice(tickecPrice);
+                                    ticketPay.setTicketId(ticketResponse.getId());
+                                    ticketPay.setVehicleId(ticketResponse.getVehicle_id());
+
+                                    Call<TicketResponse> call = request.payTicket(ticketPay);
+
+                                    final AlertDialog alertDialog = new SpotsDialog(TimerCountActivity.this);
+                                    alertDialog.show();
+
+                                    call.enqueue(new Callback<TicketResponse>() {
+                                        @Override
+                                        public void onResponse(Response<TicketResponse> response, Retrofit retrofit) {
+                                            if (response.isSuccess()) {
+
+                                                TicketResponse ticket = response.body();
+
+                                                if (ticket.getPaid()) {
+                                                    Toast.makeText(getApplicationContext(),
+                                                            getResources().getText(R.string.message_ticket_paid),
+                                                            Toast.LENGTH_SHORT).show();
+                                                    alertDialog.dismiss();
+                                                    finish();
+                                                } else {
+                                                    Toast.makeText(getApplicationContext(),
+                                                            getResources().getText(R.string.message_wrong_bad_request),
+                                                            Toast.LENGTH_SHORT).show();
+                                                    alertDialog.dismiss();
+                                                }
+
+
+                                            } else {
+                                                Toast.makeText(getApplicationContext(),
+                                                        getResources().getText(R.string.message_wrong_bad_request),
+                                                        Toast.LENGTH_SHORT).show();
+                                                alertDialog.dismiss();
+                                            }
+
+                                            alertDialog.dismiss();
+                                        }
+
+                                        @Override
+                                        public void onFailure(Throwable t) {
+                                            Toast.makeText(getApplicationContext(),
+                                                    getResources().getText(R.string.message_wrong_bad_request),
+                                                    Toast.LENGTH_SHORT).show();
+                                            alertDialog.dismiss();
+                                        }
+                                    });
+
+
+                                }
+                            })
+                            .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            })
+                            .show();
                 }
 
             }
@@ -150,8 +224,14 @@ public class TimerCountActivity extends AppCompatActivity {
                         if (ticket.getPaid() == false) {
                             ticketResponse = ticket;
                             activeCounter();
-                            Log.i("Ticket", "Timestamp :=>"+ticketResponse.getCreated_at()+" Id :=>"+ticketResponse.getId());
                         }
+                    }
+
+                    if (ticketResponse == null){
+                        finish();
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getText(R.string.message_empty_tickets),
+                                Toast.LENGTH_SHORT).show();
                     }
                 }else{
                     Toast.makeText(getApplicationContext(),
@@ -176,8 +256,6 @@ public class TimerCountActivity extends AppCompatActivity {
 
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         Date date;
-
-        int i=0;
             try {
                 Date dateNow= new Date();
                 date = df.parse(ticketResponse.getCreated_at());
@@ -185,7 +263,13 @@ public class TimerCountActivity extends AppCompatActivity {
                 long elapsedRealtimeOffset = System.currentTimeMillis() - SystemClock.elapsedRealtime();
                 tvTimerConter.setBase(lastSuccess - elapsedRealtimeOffset);
                 tvTimerConter.start();
-                showTicketPrice(ticketResponse);
+                double price = calculateTicketPrice(ticketResponse);
+
+                Locale locale = new Locale("pt", "BR");
+                NumberFormat formatter = NumberFormat.getCurrencyInstance(locale);
+
+                tvPrice.setText(String.valueOf(formatter.format(price)));
+
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -205,9 +289,10 @@ public class TimerCountActivity extends AppCompatActivity {
         return null;
     }
 
-    private void showTicketPrice(TicketResponse t){
+    private double calculateTicketPrice(TicketResponse t){
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
         Date dateNow= new Date();
+        double price=0;
 
         try{
 
@@ -219,16 +304,13 @@ public class TimerCountActivity extends AppCompatActivity {
             long diffHours = diff / (60 * 60 * 1000) % 24;
             long diffDays = diff / (24 * 60 * 60 * 1000);
 
-            double price= diffHours*3.59;
-            Locale locale = new Locale("pt", "BR");
-            NumberFormat formatter = NumberFormat.getCurrencyInstance(locale);
-
-            tvPrice.setText(String.valueOf(formatter.format(price)));
+            price= diffHours*3.59;
 
         }catch (ParseException e){
-
+            Log.e("Parse exception", "Exception ->"+e.getMessage());
         }
 
+        return price;
 
     }
 }
