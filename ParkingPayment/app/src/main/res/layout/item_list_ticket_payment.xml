@@ -19,19 +19,28 @@
             android:orientation="horizontal"
             android:padding="5dp">
             <TextView
+                android:id="@+id/tv_payment_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="pendente"
+                android:gravity="center"
+                android:layout_weight="1"/>
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_ticket_information"
-                android:text="Ticket title"
-                android:textSize="20dp"
+                android:text="dd/MM/yyyy"
+                android:textSize="18dp"
                 android:layout_weight="1"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textAlignment="center"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_ticket_price"
-                android:text="Ticket title"
-                android:textSize="20dp"
+                android:text="R$00,00"
+                android:textSize="18dp"
                 android:layout_weight="1"
                 android:gravity="center"/>
         </LinearLayout>

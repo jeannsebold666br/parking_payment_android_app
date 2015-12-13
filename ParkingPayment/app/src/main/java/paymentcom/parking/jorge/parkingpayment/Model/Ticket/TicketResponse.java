@@ -1,7 +1,12 @@
 package paymentcom.parking.jorge.parkingpayment.Model.Ticket;
 
+import android.util.Log;
+
 import com.google.gson.annotations.SerializedName;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -55,7 +60,13 @@ public class TicketResponse {
     }
 
     public Float getPrice() {
-        return price;
+
+        if (!getPaid()){
+            return calculatePrice();
+        }else{
+            return price;
+        }
+
     }
 
     public void setPrice(Float price) {
@@ -69,5 +80,28 @@ public class TicketResponse {
 
     public void setPaid(Boolean paid) {
         this.paid = paid;
+    }
+
+    public float calculatePrice(){
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        Date dateNow= new Date();
+        float price=0;
+
+        try{
+
+            Date date = df.parse(getCreated_at());
+            //in milliseconds
+            long diff = dateNow.getTime() - date.getTime();
+            long diffSeconds = diff / 1000 % 60;
+            long diffMinutes = diff / (60 * 1000) % 60;
+            long diffHours = diff / (60 * 60 * 1000) % 24;
+            long diffDays = diff / (24 * 60 * 60 * 1000);
+
+            price= (float) (diffHours*3.59);
+
+        }catch (ParseException e){
+            Log.e("Parse exception", "Exception ->" + e.getMessage());
+        }
+        return price;
     }
 }
