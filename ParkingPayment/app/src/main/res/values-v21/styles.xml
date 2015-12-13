@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="AppTheme" parent="@style/Theme.AppCompat.Light">
+        <item name="android:colorPrimary">@color/primary</item>
+        <item name="android:colorPrimaryDark">@color/primary_dark</item>
+        <item name="android:colorAccent">@color/accent</item>
         <!-- Text input layout -->
-        <item name="android:textColor">@color/accent</item>
+        <item name="android:textColor">@color/primary_text</item>
         <item name="android:textSize">14sp</item>
         <item name="colorControlNormal">#c5c5c5</item>
         <item name="colorControlActivated">@color/accent</item>
@@ -11,8 +14,9 @@
         <item name="android:actionBarStyle">@style/ActionBarCustom</item>
         <item name="actionBarStyle">@style/ActionBarCustom</item>
     </style>
-
+    
     <style name="ActionBarCustom" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="android:statusBarColor">@color/primary_dark</item>
         <item name="android:background">@color/primary</item>
     </style>
 </resources>

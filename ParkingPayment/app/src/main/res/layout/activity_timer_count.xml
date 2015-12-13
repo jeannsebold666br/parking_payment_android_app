@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top"
         android:gravity="center"
-        android:textSize="30dp"
+        android:textSize="25dp"
         android:text="@string/title_tv_parkingTime"
         android:layout_weight="0"/>
 
@@ -33,13 +33,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_weight="2">
+
         <TextView
             android:id="@+id/tv_title_ticket_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_ticket_price"
             android:gravity="center"
-            android:textSize="25dp"
+            android:textSize="18dp"
             android:layout_weight="2"/>
 
         <TextView
@@ -47,10 +48,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="R$00,00"
+            android:textColor="@color/primary_text"
             android:gravity="left|center"
-            android:textSize="25dp"
+            android:textSize="20dp"
             android:layout_weight="1"/>
-
     </LinearLayout>
 
 
@@ -60,8 +61,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:elevation="5dp"
+        android:src="@drawable/ic_action_add_shopping_cart"
         android:layout_marginBottom="16dp"
         app:floatingActionButtonImplicitElevation="false"
+        app:floatingActionButtonColor="@color/accent"
         android:layout_gravity="center" />
 
 
