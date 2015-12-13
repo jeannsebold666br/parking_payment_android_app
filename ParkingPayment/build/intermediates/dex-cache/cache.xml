@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/jorgehsrocha/Documents/androidapps/ParkingPayment/ParkingPayment/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="/home/jorgehsrocha/Documents/androidapps/ParkingPayment/ParkingPayment/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-23.1.1_be17a13501da0960a6dfacb38facd38e52de2b81.jar" />
+    </item>
+    <item
+        jar="/home/jorgehsrocha/Documents/androidapps/ParkingPayment/ParkingPayment/app/build/intermediates/exploded-aar/me.dm7.barcodescanner/zxing/1.8.3/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="1bfe1cf652c5fe0f666ea9c9d8a4fd2db1b40a11">
+        <dex dex="/home/jorgehsrocha/Documents/androidapps/ParkingPayment/ParkingPayment/app/build/intermediates/pre-dexed/debug/me.dm7.barcodescanner-zxing-1.8.3_197289ddf0fbad121ba45f6ba8791ab8e11e96ed.jar" />
+    </item>
+    <item
+        jar="/home/jorgehsrocha/Documents/androidapps/ParkingPayment/ParkingPayment/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="/home/jorgehsrocha/Documents/androidapps/ParkingPayment/ParkingPayment/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.0.1_6c09414f660c86382da6a15a0f6e530e7412bdfa.jar" />
+    </item>
+    <item
+        jar="/home/jorgehsrocha/Documents/androidapps/ParkingPayment/ParkingPayment/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="5e412e954a24c5310a459c09870e4e2081aceb03">
+        <dex dex="/home/jorgehsrocha/Documents/androidapps/ParkingPayment/ParkingPayment/app/build/intermediates/pre-dexed/debug/com.android.support-cardview-v7-23.1.1_42656c455962a0c08cbad398e047890aef798b44.jar" />
+    </item>
+    <item
+        jar="/home/jorgehsrocha/.gradle/caches/modules-2/files-2.1/com.google.zxing/core/3.2.1/2287494d4f5f9f3a9a2bb6980e3f32053721b315/core-3.2.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="2287494d4f5f9f3a9a2bb6980e3f32053721b315">
+        <dex dex="/home/jorgehsrocha/Documents/androidapps/ParkingPayment/ParkingPayment/app/build/intermediates/pre-dexed/debug/core-3.2.1_3eb9417cc323a6528dba82d8567344d40739651b.jar" />
+    </item>
+    <item
+        jar="/home/jorgehsrocha/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="/home/jorgehsrocha/Documents/androidapps/ParkingPayment/ParkingPayment/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1_8f4c6022d96651098edd31eda0471395b858c9f5.jar" />
+    </item>
+    <item
+        jar="/home/jorgehsrocha/Documents/androidapps/ParkingPayment/ParkingPayment/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/2.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="031e8b3ab2df4ab43b1017f84417d7e10dfbb8d2">
+        <dex dex="/home/jorgehsrocha/Documents/androidapps/ParkingPayment/ParkingPayment/app/build/intermediates/pre-dexed/debug/de.hdodenhof-circleimageview-2.0.0_0f18a00132ad92398e672b2ff69f25612670afd2.jar" />
+    </item>
+    <item
+        jar="/home/jorgehsrocha/Documents/androidapps/ParkingPayment/ParkingPayment/app/build/intermediates/exploded-aar/me.dm7.barcodescanner/core/1.8.3/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="2acb8f25e91dc79b3e9fe3e4fc059d491756efcd">
+        <dex dex="/home/jorgehsrocha/Documents/androidapps/ParkingPayment/ParkingPayment/app/build/intermediates/pre-dexed/debug/me.dm7.barcodescanner-core-1.8.3_93865be01b88255a49d185dc7163583518c42020.jar" />
+    </item>
+    <item
+        jar="/home/jorgehsrocha/Documents/androidapps/ParkingPayment/ParkingPayment/app/build/intermediates/exploded-aar/com.journeyapps/zxing-android-embedded/3.0.2/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="744a4b394a9a7db8a4c4680836d8544802a9cd64">
+        <dex dex="/home/jorgehsrocha/Documents/androidapps/ParkingPayment/ParkingPayment/app/build/intermediates/pre-dexed/debug/com.journeyapps-zxing-android-embedded-3.0.2_26abedb613e730ec9f521a0ceaded4bbcfb3d6bb.jar" />
+    </item>
+    <item
+        jar="/home/jorgehsrocha/Documents/androidapps/ParkingPayment/ParkingPayment/app/build/intermediates/exploded-aar/com.shamanland/fab/0.0.8/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="e58f2fb4991259b0d4e78c3b3dd686ec58736a29">
+        <dex dex="/home/jorgehsrocha/Documents/androidapps/ParkingPayment/ParkingPayment/app/build/intermediates/pre-dexed/debug/com.shamanland-fab-0.0.8_18adfc6e7a794de93b46750ef272a175b601f662.jar" />
+    </item>
+    <item
+        jar="/home/jorgehsrocha/Documents/androidapps/ParkingPayment/ParkingPayment/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="/home/jorgehsrocha/Documents/androidapps/ParkingPayment/ParkingPayment/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1_e03535c71884bed2d1ee581a7a550eccb65ad4aa.jar" />
+    </item>
+    <item
+        jar="/home/jorgehsrocha/Documents/androidapps/ParkingPayment/ParkingPayment/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="/home/jorgehsrocha/Documents/androidapps/ParkingPayment/ParkingPayment/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.1.1_e3f866d53c725c5e3db58c34ec159a1d062f18ba.jar" />
+    </item>
+    <item
+        jar="/home/jorgehsrocha/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/7.0.1/d5d13ea991eab0252e3710e5df3d6a9d4b21d461/butterknife-7.0.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="/home/jorgehsrocha/Documents/androidapps/ParkingPayment/ParkingPayment/app/build/intermediates/pre-dexed/debug/butterknife-7.0.1_dfac7e0c68d2920f7c06cf1ab8d0b82d5f896efd.jar" />
+    </item>
+
+</items>

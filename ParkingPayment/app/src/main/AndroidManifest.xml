@@ -2,14 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="paymentcom.parking.jorge.parkingpayment" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:screenOrientation="portrait">
         <activity
             android:name=".View.DashboardActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,21 +24,26 @@
         </activity>
         <activity
             android:name=".View.TimerCountActivity"
-            android:label="@string/title_activity_timer_count" >
+            android:label="@string/title_activity_timer_count"
+            android:screenOrientation="portrait">
 
         </activity>
         <activity
             android:name=".View.PinCheckerActivity"
-            android:label="@string/title_activity_pin_checker" >
+            android:label="@string/title_activity_pin_checker"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".View.PaymentsCongratsActivity"
-            android:label="@string/title_activity_payments_congrats" >
+            android:label="@string/title_activity_payments_congrats"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".View.ListTicketsActivity"
-            android:label="@string/title_activity_list_tickets" >
+            android:label="@string/title_activity_list_tickets"
+            android:screenOrientation="portrait">
         </activity>
+
     </application>
 
 </manifest>
