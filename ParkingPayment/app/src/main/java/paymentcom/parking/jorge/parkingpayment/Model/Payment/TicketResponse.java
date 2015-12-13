@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Created by jorge on 30/09/15.
  */
-public class Payment {
+public class TicketResponse {
 
     private Date date;
     private Double price;
