@@ -2,7 +2,6 @@ package paymentcom.parking.jorge.parkingpayment.Controller.Adapters.PaymentsList
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +12,10 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import paymentcom.parking.jorge.parkingpayment.Model.Payment.Payment;
+
+import paymentcom.parking.jorge.parkingpayment.Model.Ticket.TicketResponse;
 import paymentcom.parking.jorge.parkingpayment.R;
+import paymentcom.parking.jorge.parkingpayment.View.ListTicketsActivity;
 
 /**
  * Created by jorge on 30/09/15.
@@ -22,13 +23,12 @@ import paymentcom.parking.jorge.parkingpayment.R;
 public class PaymentListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     Context context;
-    List<Payment> paymentList;
+    List<TicketResponse> ticketResponseList;
 
-    public PaymentListAdapter(Context context, List<Payment> paymentList) {
+    public PaymentListAdapter(Context context, List<TicketResponse> ticketResponseList) {
         this.context = context;
-        this.paymentList = paymentList;
+        this.ticketResponseList = ticketResponseList;
     }
-
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -41,14 +41,13 @@ public class PaymentListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewHolderPayment holderPayment = (ViewHolderPayment) holder;
-        Payment payment = paymentList.get(position);
-        holderPayment.setPayment(payment);
+        TicketResponse ticketResponse = ticketResponseList.get(position);
+        holderPayment.setPayment(ticketResponse);
     }
 
     @Override
     public int getItemCount() {
-        Log.i("Count",""+paymentList.size());
-        return paymentList.size();
+        return ticketResponseList.size();
     }
 
     public class ViewHolderPayment extends RecyclerView.ViewHolder{
@@ -64,10 +63,10 @@ public class PaymentListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             ButterKnife.bind(this,itemView);
         }
 
-       void  setPayment(Payment payment){
+       void  setPayment(TicketResponse ticketResponse){
 
-           tvTicketPrice.setText("R$ "+ payment.getPrice().toString());
-           tvTicketInformation.setText(payment.getDate().toString());
+           tvTicketPrice.setText("R$ "+ ticketResponse.getPrice().toString());
+           tvTicketInformation.setText(ticketResponse.getCreated_at());
 
        }
     }
