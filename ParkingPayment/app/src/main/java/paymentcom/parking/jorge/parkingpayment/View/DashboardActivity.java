@@ -36,11 +36,11 @@ import retrofit.Retrofit;
 
 public class DashboardActivity extends AppCompatActivity {
 
-    @Bind(R.id.tv_veichile_name)
-    TextView tvVeichileName;
-
-    @Bind(R.id.tv_veichile_identifier)
-    TextView tvVeichileIdentifier;
+//    @Bind(R.id.tv_veichile_name)
+//    TextView tvVeichileName;
+//
+//    @Bind(R.id.tv_veichile_identifier)
+//    TextView tvVeichileIdentifier;
 
     @Bind(R.id.bt_payTicket)
     Button btPayTicket;
@@ -48,8 +48,8 @@ public class DashboardActivity extends AppCompatActivity {
     @Bind(R.id.bt_listPayments)
     Button btListPayments;
 
-    @Bind(R.id.iv_profile_image)
-    CircleImageView ivProfileImage;
+//    @Bind(R.id.iv_profile_image)
+//    CircleImageView ivProfileImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +63,7 @@ public class DashboardActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_dashboard, menu);
+//        getMenuInflater().inflate(R.menu.menu_dashboard, menu);
         return true;
     }
 

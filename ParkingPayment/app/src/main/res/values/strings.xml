@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ParkingPayment</string>
+    <string name="app_name">Ticket pago!</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -19,9 +19,10 @@
 
     /*Activity*/
     /*Dashboard*/
+    <string name="title_dashboard">Dashboard</string>
     <string name="title_bt_payTicket">Pagar ticket</string>
     <string name="title_bt_list_payment">Listar pagamentos</string>
-    <string name="title_activity_timer_count">TimerCountActivity</string>
+    <string name="title_activity_timer_count">Último ticket</string>
 
     /*Counter*/
     <string name="title_tv_parkingTime">Tempo no estacionamento</string>
@@ -37,7 +38,7 @@
     /*Payment congrats*/
     <string name="title_tv_payment_congrats">Parabéns, seu ticket pode ser usado para sair do
     estacionamento.</string>
-    <string name="title_activity_list_tickets">ListTicketsActivity</string>
+    <string name="title_activity_list_tickets">Meus tickets</string>
 
     /*Ticket list*/
     <string name="title_tv_payment_status_paid">Pago</string>
