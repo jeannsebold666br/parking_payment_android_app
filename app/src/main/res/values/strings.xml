@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">Ticket pago!</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+
+    /*Dialogs*/
+    /*SignIn and SignUp*/
+    <string name="title_et_email">Email</string>
+    <string name="title_et_password">Senha</string>
+    <string name="title_bt_signin">Acessar</string>
+    <string name="title_bt_signup">Registrar</string>
+    <string name="message_wrong_credentials">"Verifique se o email e senha estão corretos"</string>
+    <string name="message_wrong_bad_request">"Ocorreu um erro, verifique sua conexão com internet e tente novamente"</string>
+    <string name="message_ticket_paid">Ticket pago com sucesso. Você tem até 20 min para sair do estacionamento, obrigado. </string>
+    <string name="message_ticket_already_paid">Ticket já foi pago anteriormente.</string>
+    <string name="message_empty_tickets">Você não tickets a serem pagos.</string>
+
+    /*Activity*/
+    /*Dashboard*/
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_bt_payTicket">Pagar ticket</string>
+    <string name="title_bt_list_payment">Listar pagamentos</string>
+    <string name="title_activity_timer_count">Último ticket</string>
+
+    /*Counter*/
+    <string name="title_tv_parkingTime">Tempo no estacionamento</string>
+    <string name="title_activity_pin_checker">PinCheckerActivity</string>
+    <string name="title_bt_pay_now">Efetuar o pagamento</string>
+    <string name="message_load_fail_ticket">Verifique sua conexão com a internet</string>
+    <string name="title_ticket_price">Valor a ser pago</string>
+
+    /*Pin information*/
+    <string name="title_tv_pin_information">Digite o código PIN para pagamento</string>
+    <string name="title_activity_payments_congrats">PaymentsCongratsActivity</string>
+
+    /*Payment congrats*/
+    <string name="title_tv_payment_congrats">Parabéns, seu ticket pode ser usado para sair do
+    estacionamento.</string>
+    <string name="title_activity_list_tickets">Meus tickets</string>
+
+    /*Ticket list*/
+    <string name="title_tv_payment_status_paid">Pago</string>
+    <string name="title_tv_payment_status_waiting">Pendente</string>
+
+</resources>
