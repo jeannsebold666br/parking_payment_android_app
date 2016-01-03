@@ -1,3 +1,5 @@
+![screenshot]
+(http://i.imgur.com/d6okqaJ.png)
 ## Introduction
 This project is a small example about how to integrate a API using Retrofit 2.0 and barcode scanner.
 
